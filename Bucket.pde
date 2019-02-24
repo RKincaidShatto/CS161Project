@@ -6,14 +6,17 @@ class Bucket{
   
   
  public Bucket(){
+   this.x = mouseX;
    this.y = WHEIGHT*.9;
  }
   void draw(float x){
     if(atLeftEdge(x)){x = 0;}
     if(atRightEdge(x)){x = WWIDTH-BUCKETSIZE;}
     fill(BUCKETCOLOR);
+    this.x = x;
     rect(x, y, BUCKETSIZE, BUCKETSIZE);
   }
+  
   boolean atLeftEdge (float x){return x <= 0;}
   boolean atRightEdge (float x){return x+BUCKETSIZE >= WWIDTH;}
   

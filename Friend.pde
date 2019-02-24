@@ -1,29 +1,27 @@
 class Friend{
   float x;
   float y;
-  float fallSpeed = 2;
+  float fallSpeed;
+  String[] lines;
+  String friendName;
   
-  final color FRIENDCOLOR = color(50);
+  final color FRIENDCOLOR = color(100);
   final float FRIENDSIZE = 80;
-  final String FRIENDSTR = "Placeholder";
   final float FALLVEL = .5;
   
-  //String[] lines = loadStrings("names.txt");
-  
   public Friend(){
-    this.x = random(0, WWIDTH);
+    lines = loadStrings("names.txt");   
+    this.x = random(FRIENDSIZE*2, WWIDTH);
     this.y = 0;
-    this.fallSpeed = 2;
-    //for (int i = 0 ; i < lines.length; i++) {
-    //  println(lines[i]);
-    //}
+    this.fallSpeed = random(0.5, 1);
+    this.friendName = lines[((int)random(0, lines.length))];
   }
   
   void draw(){
     fill(FRIENDCOLOR);
     ellipse(x, y, FRIENDSIZE, FRIENDSIZE);
-    fill(0);
-    text(FRIENDSTR, x - FRIENDSIZE, y);
+    fill(200);
+    text(friendName, x - FRIENDSIZE/2, y);
   }
   
   void update(){

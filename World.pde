@@ -21,14 +21,10 @@ class World{
    foeCheck();
    friendCheck();
    scoreboard.draw();
-   bucket.draw(mouseX);
+   bucket.draw(mouseX-bucket.BUCKETSIZE/2);
    psCheck();
-
-   //println("Distance: " + dist(friend.y + friend.FRIENDSIZE/2, 0, bucket.y + bucket.BUCKETSIZE, 0) );
-   if (keyPressed){
-     scoreboard.update(-1);
-     particleSwarm.add(new ParticleSwarm(NUMBER_OF_PARTICLES, friend.x, friend.y));  
-   }
+   friendCollision();
+   foeCollision();
  }
  
  void foeCheck(){
@@ -45,11 +41,28 @@ class World{
      }      
    }
  }
+ void friendCollision(){
+  if(dist(friend.x, friend.y, bucket.x+bucket.BUCKETSIZE/2, bucket.y) < friend.FRIENDSIZE/2){
+    scoreboard.update(1);
+    particleSwarm.add(new ParticleSwarm(NUMBER_OF_PARTICLES, friend.x, friend.y));
+    friendExists = false;
+    friend = new Friend();
+    dropCounter+= 1;
+  }
+ }
+ void foeCollision(){
+   if(dist(foe.x, foe.y, bucket.x+bucket.BUCKETSIZE/2, bucket.y) < foe.FOESIZE/2){
+     scoreboard.update(-2);
+     foeExists = false;
+     foe = new Foe();
+     dropCounter+= 1;
+   } 
+  } 
  void friendCheck(){
       if (random(1, 150) < 2){
         friendExists = true;
         dropCounter += 1;
-   }    
+      }      
    if (friendExists){
      friend.draw();
      friend.update();

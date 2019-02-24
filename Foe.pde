@@ -8,9 +8,9 @@ class Foe{
   final float FALLVEL = .5;
   
   public Foe(){
-    this.x = random(0, WWIDTH);
+    this.x = random(FOESIZE*2, WWIDTH);
     this.y = 0;
-    this.fallSpeed = 2;
+    this.fallSpeed = random (.5, 2);
   }
   
   void draw(){
