@@ -1,6 +1,6 @@
 class Particle {
   
-  final float DEFAULT_SIZE = 30;
+  final float PSIZE = 30;
   final float MINIMUM_INITIAL_X_VELOCITY = -20;
   final float MAXIMUM_INITIAL_X_VELOCITY = 20;
   final float MINIMUM_INITIAL_Y_VELOCITY = -20;
@@ -17,8 +17,8 @@ class Particle {
   public Particle() {
     this.x = width / 2;
     this.y = height / 2;
-    this.size = random(DEFAULT_SIZE - 20, DEFAULT_SIZE);
-    this.pColor = color(random(50, 255), random(50, 255), random(50, 255), 175);
+    this.size = random(PSIZE - 20, PSIZE);
+    this.pColor = color(random(20, 255), random(20, 255), random(20, 255), 175);
     this.xVelocity = random(MINIMUM_INITIAL_X_VELOCITY, MAXIMUM_INITIAL_X_VELOCITY);
     this.yVelocity = random(MINIMUM_INITIAL_Y_VELOCITY, MAXIMUM_INITIAL_Y_VELOCITY);
   } 
@@ -26,7 +26,7 @@ class Particle {
   public Particle(float x, float y) {
     this.x = x;
     this.y = y;
-    this.size = random(DEFAULT_SIZE - 20, DEFAULT_SIZE);
+    this.size = random(PSIZE - 20, PSIZE + 20);
     this.pColor = color(random(50, 255), random(50, 255), random(50, 255), 150);
     this.xVelocity = random(MINIMUM_INITIAL_X_VELOCITY, MAXIMUM_INITIAL_X_VELOCITY);
     this.yVelocity = random(MINIMUM_INITIAL_Y_VELOCITY, MAXIMUM_INITIAL_Y_VELOCITY);

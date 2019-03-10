@@ -1,16 +1,19 @@
 class Scoreboard{ 
   
   int score;
+  final color WHITE = color(255);
+  final int TEXTSIZE = 30;
+  
   
   public Scoreboard(){
     score = 0;    
   } 
   void draw(){
-    fill(0);
-    textSize(30);
-    text("Current Score: " + score, WWIDTH*.3, WHEIGHT*.1);       
+    fill(WHITE);
+    textSize(TEXTSIZE);
+    text("Score: " + this.score, width *.3, height *.1); 
   } 
   void update(int x){
     this.score += x; 
   }
-}
+} 
