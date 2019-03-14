@@ -17,6 +17,12 @@ class Bucket{
     rectMode(CENTER);
     rect(x, y, BUCKETSIZE, BUCKETSIZE);
   }
-  boolean atLeftEdge (float x){return x <= BUCKETSIZE/2;}
-  boolean atRightEdge (float x){return x >= width - BUCKETSIZE/2;}  
+  
+  boolean atLeftEdge (float x){
+    return x <= BUCKETSIZE/2;
+  }
+  
+  boolean atRightEdge (float x){
+    return x >= width - BUCKETSIZE/2;
+  }  
 }

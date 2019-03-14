@@ -1,4 +1,5 @@
 class Foe{
+  
   float x;
   float y;
   float fallSpeed;

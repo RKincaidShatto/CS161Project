@@ -9,18 +9,22 @@ class World{
  Foe foe;
  Friend friend;
  Scoreboard scoreboard;
+ Background BG;
  
  public World(){
   bucket = new Bucket();
   foe = new Foe();
   friend = new Friend();
   scoreboard = new Scoreboard();
+  BG = new Background();
  }
  
  void draw(){
    scoreboard.draw();
    bucket.draw(mouseX);
    stateCheck();
+   BG.draw();
+   BG.rotate(scoreboard.score);
  }
  
  void finalScore(){
@@ -65,7 +69,7 @@ class World{
      if (foeExists){
        foe.draw();
        foe.update();
-       if (foe.y > width + foe.FOESIZE){
+       if (foe.y > height + foe.FOESIZE){
          foeExists = false;
          foe = new Foe();
        }      
@@ -77,9 +81,10 @@ class World{
    if (friendExists){
      friend.draw();
      friend.update();
-       if (friend.y > width + friend.FRIENDSIZE){
+       if (friend.y > height + friend.FRIENDSIZE){
          friendExists = false;
          friend = new Friend();
+         scoreboard.update(-1);
        }      
    }
    for(int i = particleSwarm.size() - 1; i >= 0; --i){
